@@ -1,0 +1,144 @@
+.item-display {
+  width: 100%;
+  height: auto;
+  background-color: #060a17;
+  color: whitesmoke;
+}
+
+.item-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+  background-color: #1b2733;
+  max-width: 1200px;
+  margin: 2rem auto;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 0.9rem;
+}
+
+.item-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.item-title {
+  font-size: 2rem;
+  color: #6c748c;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.item-description {
+    width: 65%;
+    text-align: center;
+    background-color: #2e3c50;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.item-description,
+.item-category,
+.item-price {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: whitesmoke;
+}
+
+.availability {
+  font-weight: bold;
+  margin-top: 0.5rem;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+  text-align: left;
+}
+
+.availability.green {
+  color: white;
+  background-color: green;
+}
+
+.availability.red {
+  color: white;
+  background-color: red;
+}
+
+.item-artist-background {
+  margin-top: 2rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #2e3c50;
+}
+
+.item-artist-background h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.item-artist-background p {
+  font-size: 1rem;
+  color: #a0a8b5;
+}
+
+@media (max-width: 768px) {
+  .item-details {
+    padding: 1rem;
+  }
+
+  .item-image {
+    max-width: 100%;
+  }
+
+  .item-title {
+    font-size: 1.5rem;
+  }
+
+  .item-description,
+  .item-category,
+  .item-price {
+    font-size: 1rem;
+  }
+
+  .item-artist-background h3 {
+    font-size: 1.25rem;
+  }
+
+  .item-artist-background p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .item-details {
+    padding: 0.5rem;
+  }
+
+  .item-title {
+    font-size: 1.25rem;
+  }
+
+  .item-description,
+  .item-category,
+  .item-price {
+    font-size: 0.9rem;
+  }
+
+  .item-artist-background h3 {
+    font-size: 1rem;
+  }
+
+  .item-artist-background p {
+    font-size: 0.8rem;
+  }
+}

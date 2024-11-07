@@ -1,0 +1,154 @@
+.sign-in-card {
+  display: flex;
+  border: 0.0625rem solid #ccc;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
+  max-width: 62.5rem; 
+  margin: 5rem auto;
+  overflow: hidden;
+}
+
+.sign-in-form-heading1 {
+  color: whitesmoke;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 1.5625rem; 
+}
+
+.sign-in-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+}
+
+.sign-in-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.sign-in-form {
+  flex: 1;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sign-in-form-inputs {
+  margin: 0.625rem auto;
+  padding: 0.625rem;
+  border: 0.0625rem solid #ccc;
+  border-radius: 0.5625rem; 
+  text-align: center;
+  width: 20rem;
+  min-height: 2.75rem;
+  font-size: 1.2rem;
+}
+
+.sign-in-form-button {
+  margin-top: 0.625rem;
+  margin: 0.625rem auto;
+  padding: 0.625rem;
+  border: none;
+  border-radius: 0.5625rem; 
+  background-color: rgb(3, 7, 60);
+  color: white;
+  cursor: pointer;
+  width: 20rem;
+  min-height: 2.75rem;
+}
+
+.sign-in-form-button:hover {
+  background-color: black;
+}
+
+.forgot-password {
+  margin-top: 0.3125rem; 
+  margin-bottom: 1.25rem; 
+  text-align: right;
+  color: whitesmoke;
+  align-self: center;
+  width: 20rem;
+}
+
+.forgot-password:hover {
+  color: blue;
+  cursor: pointer;
+}
+
+.to-sign-up {
+  margin-top: 1.25rem; 
+  color: whitesmoke;
+  text-align: center;
+  align-self: center;
+}
+
+.to-sign-up-link:hover {
+  cursor: pointer;
+  color: blue;
+}
+
+.sign-in-error-message {
+  color: red;
+  text-align: center;
+}
+
+
+@media (max-width: 480px ) { 
+  .sign-in-card {
+    flex-direction: column;
+    max-width: 100%;
+    margin: 1.25rem;
+  }
+
+  .sign-in-form-inputs,
+  .sign-in-form-button,
+  .forgot-password,
+  .to-sign-up {
+    width: 90%; 
+  }
+}
+
+@media (min-width: 481px ) and (max-width: 768px ) {
+  .sign-in-card {
+    flex-direction: column;
+    max-width: 90%;
+    margin: 1.25rem auto; 
+  }
+
+  .sign-in-form-inputs,
+  .sign-in-form-button,
+  .forgot-password,
+  .to-sign-up {
+    width: 80%; 
+  }
+}
+
+@media (min-width: 769px ) and (max-width: 1200px ) { 
+  .sign-in-card {
+    flex-direction: row;
+    margin: 5rem auto;
+  }
+
+  .sign-in-form-inputs,
+  .sign-in-form-button,
+  .forgot-password,
+  .to-sign-up {
+    width: 70%; 
+  }
+}
+
+@media (min-width: 1201px ) { 
+  .sign-in-card {
+    flex-direction: row; 
+  }
+
+  .sign-in-form-inputs,
+  .sign-in-form-button,
+  .forgot-password,
+  .to-sign-up {
+    width: 20rem; 
+  }
+}

@@ -1,0 +1,237 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.admin-system {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 80%;
+}
+
+.admin-system-heading {
+  color: #5e99c3;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.split-screen {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  background-color: #242331;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.sidebar {
+  background-color: #132946;
+  padding: 20px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: auto;
+}
+
+.admin-button {
+  background-color: #3c414e;
+  color: whitesmoke;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.admin-button:hover {
+  background-color: #22466c;
+}
+
+.admin-main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #222c32;
+}
+
+h2 {
+  color: #5e99c3;
+  margin-bottom: 15px;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+select {
+  background-color: #384c53;
+  color: whitesmoke;
+  border: 1px solid #4174a1;
+  border-radius: 5px;
+  padding: 8px;
+}
+
+.availability-available {
+  border-left: 5px solid green;
+}
+
+.availability-out {
+  border-left: 5px solid red;
+}
+
+.table-container {
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #444;
+  color: whitesmoke;
+}
+
+th {
+  background-color: #333;
+}
+
+td {
+  background-color: #2a353e;
+}
+
+button.admin-edit,
+button.admin-delete {
+  background-color: #5e99c3;
+  color: whitesmoke;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+button.admin-delete {
+  background-color: #d9534f;
+  margin-left: 10px;
+}
+
+button.admin-edit:hover {
+  background-color: #3386a1;
+}
+
+button.admin-delete:hover {
+  background-color: #c9302c;
+}
+
+.actions-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.admin-form-container {
+    margin-top: 30px;
+    background-color: #2a353e;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .admin-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .admin-input-group label {
+    color: #b4c4cc;
+    font-size: 1.1em;
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  textarea,
+  select {
+    background-color: #384c53;
+    color: whitesmoke;
+    border: 1px solid #4174a1;
+    border-radius: 5px;
+    padding: 12px;
+    font-size: 1em;
+    transition: all 0.3s ease;
+  }
+  
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
+    border-color: #5e99c3;
+  }
+  
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  
+  button {
+    padding: 12px 25px;
+    background-color: #5e99c3;
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #3386a1;
+  }
+  
+  button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  textarea:focus,
+  select:focus {
+    border: 1px solid #5e99c3;
+    background-color: #2a353e;
+  }
+  
+  input[type="text"]::placeholder,
+  input[type="number"]::placeholder,
+  textarea::placeholder,
+  select::placeholder {
+    color: #8e9ca3;
+  }
+  
+  textarea {
+    min-height: 150px;
+    resize: vertical;
+  }
+  
