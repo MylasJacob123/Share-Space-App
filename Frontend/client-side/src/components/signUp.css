@@ -4,8 +4,10 @@
   border-radius: 0.5rem; 
   box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
   max-width: 75rem;
-  margin: 5rem auto;
+  margin: 2rem auto;
   overflow: hidden;
+  background-color: #0E1E36;
+
 }
 
 .sign-up-form-heading1,

@@ -1,25 +1,31 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setLoading, setUser, setError } from "../redux/authSlice";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoading, setUser, setError, initializeUser } from "../redux/authSlice";
 import SignInImage from "../assets/SignIn-Image.png";
 import "./signIn.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Loader from "./loader";
 
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const { loading, error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(initializeUser());
+  }, [dispatch]);
 
   const handleResetNavigate = () => {
     navigate("/reset");
-  }
+  };
 
   const handleSignUpNavigate = () => {
     navigate("/signUp");
-  }
+  };
 
   const validateForm = () => {
     if (!email || !password) {
@@ -38,28 +44,31 @@ function SignIn() {
     e.preventDefault();
     if (!validateForm()) return;
 
-    console.log("User Input:", { email, password });
     dispatch(setLoading());
     try {
       const response = await axios.post("https://share-space-backend-2-0.onrender.com/auth/sign-in", {
         email,
         password,
       });
-      console.log("API Response:", response.data);
-      dispatch(setUser(response.data));
+
+      const { userId, email, isAdmin } = response.data;
+      if (isAdmin) {
+        navigate("/admin");
+      } else {
+        navigate("/");
+      }
+
+      dispatch(setUser({ userId, email, isAdmin }));
       alert("Signed in successfully!");
-      navigate("/"); 
     } catch (error) {
-      console.error(
-        "Sign In Error:",
-        error.response?.data?.error || error.message
-      );
       dispatch(setError(error.response?.data?.error || error.message));
+      setErrorMessage("Invalid email or password. Please try again.");
     }
   };
 
   return (
     <div className="sign-in-card">
+      {loading && <Loader />}
       <div className="sign-in-image">
         <img src={SignInImage} alt="Sign In" />
       </div>
@@ -83,7 +92,7 @@ function SignIn() {
         />
         {errorMessage && <p className="sign-in-error-message">{errorMessage}</p>}
         <span className="forgot-password" onClick={handleResetNavigate}>Forgot Password?</span>
-        <button className="sign-in-form-button" onClick={signInUser}>
+        <button className="sign-in-form-button" onClick={signInUser} disabled={loading}>
           Sign in
         </button>
         <span className="to-sign-up">Don't have an account?<span className="to-sign-up-link" onClick={handleSignUpNavigate}> Sign Up</span></span>

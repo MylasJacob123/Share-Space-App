@@ -35,6 +35,10 @@
   flex: 1;
 }
 
+.cart-item-details-info {
+  text-align: center;
+}
+
 .cart-item h3 {
   margin: 0;
   font-size: 1.5rem;

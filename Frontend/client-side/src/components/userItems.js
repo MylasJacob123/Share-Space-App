@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./userItems.css";
 
 function UserItems({ cartItems }) {
+  const [selectedItems, setSelectedItems] = useState([]);
   const [payTogether, setPayTogether] = useState(true);
+  const navigate = useNavigate(); // React Router hook to navigate
 
   const totalPrice = cartItems.reduce((acc, item) => {
     const price = parseFloat(item.price.replace("$", ""));
@@ -17,6 +20,22 @@ function UserItems({ cartItems }) {
     setPayTogether(!payTogether);
   };
 
+  const handleItemSelect = (item) => {
+    if (selectedItems.some((selectedItem) => selectedItem.id === item.id)) {
+      setSelectedItems(selectedItems.filter((selectedItem) => selectedItem.id !== item.id)); // Deselect
+    } else {
+      setSelectedItems([...selectedItems, item]); // Select item
+    }
+  };
+
+  const handleProceedToPayment = () => {
+    if (selectedItems.length === 0) {
+      alert("Please select at least one item to proceed with the payment.");
+    } else {
+      navigate("/payment", { state: { selectedItems } }); // Passing selected items to payment page
+    }
+  };
+
   return (
     <div className="user-items-page">
       <div className="user-items">
@@ -27,13 +46,21 @@ function UserItems({ cartItems }) {
           <ul>
             {cartItems.map((item, index) => (
               <li key={index} className="cart-item">
-                <img src={item.image} alt={item.title} className="cart-item-image" />
+                <input
+                  type="checkbox"
+                  checked={selectedItems.some((selectedItem) => selectedItem.id === item.id)}
+                  onChange={() => handleItemSelect(item)}
+                />
+                <img src={item.image} alt={item.productName} className="cart-item-image" />
                 <div className="cart-item-details">
-                  <h3>{item.title}</h3>
-                  <p>{item.artist}</p>
-                  <p>{item.category}</p>
-                  <p>{item.price}</p>
-                  {payTogether ? null : <p>Price per item: {item.price}</p>}
+                  <h3 className="cart-item-details-info">{item.productName}</h3>
+                  <p className="cart-item-details-info">Artist: {item.artist}</p>
+                  <p className="cart-item-details-info">Category: {item.category}</p>
+                  <div className="availability-text">{item.availability}</div>
+                  <p className="cart-item-details-info">${item.price}</p>
+                  {payTogether ? null : (
+                    <p className="cart-item-details-info">Price per item: ${item.price}</p>
+                  )}
                 </div>
               </li>
             ))}
@@ -48,7 +75,7 @@ function UserItems({ cartItems }) {
 
         <div className="total-price">
           <h3>
-            Total Price: $
+            Total Price: $ 
             {payTogether ? totalPrice : totalPriceSeparate.join(" + ")}
           </h3>
           {payTogether ? null : (
@@ -56,6 +83,15 @@ function UserItems({ cartItems }) {
               <p>Individual Prices: ${totalPriceSeparate.join(" + ")}</p>
             </div>
           )}
+        </div>
+
+        <div className="proceed-to-payment">
+          <button 
+            onClick={handleProceedToPayment} 
+            disabled={selectedItems.length === 0} // Disable button if no items selected
+          >
+            Proceed to Payment
+          </button>
         </div>
       </div>
     </div>

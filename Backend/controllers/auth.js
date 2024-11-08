@@ -38,29 +38,31 @@ const signUp = async (req, res) => {
   };
   
 
-const signIn = async (req, res) => {
-  const { email, password } = req.body;
-
-  try {
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    const user = userCredential.user;
-    console.log(`User signed in: ${user.uid}`);
-
-    return res
-      .status(200)
-      .json({ message: "Sign in successful", userId: user.uid });
-  } catch (authError) {
-    console.error("Error in signing user in: ", authError.message);
-
-    return res
-      .status(400)
-      .json({ message: "Error in signing user in", error: authError.message });
-  }
-};
+  const signIn = async (req, res) => {
+    const { email, password } = req.body;
+  
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      console.log(`User signed in: ${user.uid}`);
+  
+      const isAdmin = email === "sharespaceM@gmail.com" && password === "Admin@480";
+  
+      return res.status(200).json({
+        message: "Sign in successful",
+        userId: user.uid,
+        email: user.email,
+        isAdmin
+      });
+    } catch (authError) {
+      console.error("Error in signing user in: ", authError.message);
+  
+      return res.status(400).json({
+        message: "Error in signing user in",
+        error: authError.message
+      });
+    }
+  };
 
 const resetPassword = async (req, res) => {
   const { email } = req.body;

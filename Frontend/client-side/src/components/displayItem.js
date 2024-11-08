@@ -17,9 +17,12 @@ function DisplayItem({ addToCart }) {
           <p className="item-description">{item.description}</p>
           <p className="item-category">Category: {item.category}</p>
           <p className="item-price">Price: ${item.price}</p>
-          <div className={`availability ${item.availability}`}>
-            {item.availability === "green" ? "Available" : "Out of Stock"}
-          </div>
+          <div
+              className="availability-text"
+            >
+              {item.availability}
+            </div>
+            <br />
           {/* <div className="item-artist-background">
             <h3>Artist Background</h3>
             <p>{item.artistBackground}</p>

@@ -67,8 +67,7 @@ h2 {
   margin-bottom: 20px;
 }
 
-input[type="text"],
-select {
+.admin-items {
   background-color: #384c53;
   color: whitesmoke;
   border: 1px solid #4174a1;
@@ -110,6 +109,12 @@ td {
   background-color: #2a353e;
 }
 
+.td-action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 button.admin-edit,
 button.admin-delete {
   background-color: #5e99c3;
@@ -135,6 +140,7 @@ button.admin-delete:hover {
 .actions-container {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 10px;
 }
 
@@ -164,10 +170,7 @@ button.admin-delete:hover {
     font-size: 1.1em;
   }
   
-  input[type="text"],
-  input[type="number"],
-  textarea,
-  select {
+  .admin-inputs {
     background-color: #384c53;
     color: whitesmoke;
     border: 1px solid #4174a1;
@@ -177,10 +180,7 @@ button.admin-delete:hover {
     transition: all 0.3s ease;
   }
   
-  input[type="text"]:focus,
-  input[type="number"]:focus,
-  textarea:focus,
-  select:focus {
+  .admin-inputs:focus {
     outline: none;
     border-color: #5e99c3;
   }
@@ -215,10 +215,7 @@ button.admin-delete:hover {
     justify-content: flex-end;
   }
   
-  input[type="text"]:focus,
-  input[type="number"]:focus,
-  textarea:focus,
-  select:focus {
+  .admin-inputs {
     border: 1px solid #5e99c3;
     background-color: #2a353e;
   }

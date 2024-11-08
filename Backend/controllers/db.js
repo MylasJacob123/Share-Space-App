@@ -30,6 +30,32 @@ const addProduct = async (req, res) => {
   }
 };
 
+const addOrder = async (req, res) => {
+  const { id, orderData } = req.body;
+
+  try {
+    if (!id || !orderData) {
+      return res.status(400).json({ error: "User ID and order data are required" });
+    }
+
+    const userOrderRef = await db.collection("users").doc(id).collection("Orders").add(orderData);
+    console.log("User order document written with ID: ", userOrderRef.id);
+
+    const globalOrderRef = await db.collection("orders").add({ ...orderData, userId: id });
+    console.log("Global order document written with ID: ", globalOrderRef.id);
+
+    res.status(201).json({
+      message: "Order successfully created",
+      userOrderId: userOrderRef.id,
+      globalOrderId: globalOrderRef.id,
+    });
+  } catch (error) {
+    console.error("Error adding order: ", error);
+    res.status(500).json({ error: "Failed to add order", details: error.message });
+  }
+};
+
+
 
 const getProducts = async (req, res) => {
   try {
